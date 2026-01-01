@@ -2,6 +2,8 @@
 
 A GUI version of IsShounicFull that checks if [Shounic Trenches](https://www.battlemetrics.com/servers/tf2/23502552) is full. \
 \
+<img width="539" height="332" alt="Screenshot" src="https://github.com/user-attachments/assets/9bb3143d-a386-49e0-b12b-776a868b887f" />
+
 ![Built with Go](https://badges.penpow.dev/badges/built-with/go/cozy.svg)
 
 ## "What is the meaning of this?"
