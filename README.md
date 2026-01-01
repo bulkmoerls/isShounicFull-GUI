@@ -2,7 +2,7 @@
 
 A GUI version of IsShounicFull that checks if [Shounic Trenches](https://www.battlemetrics.com/servers/tf2/23502552) is full. \
 \
-<img width="539" height="332" alt="Screenshot" src="https://github.com/user-attachments/assets/9bb3143d-a386-49e0-b12b-776a868b887f" />
+<img width="402" height="332" alt="Schreenshot2" src="https://github.com/user-attachments/assets/5bcf1660-f7b1-4854-9bd4-8c66937d2afe" />
 
 ![Built with Go](https://badges.penpow.dev/badges/built-with/go/cozy.svg)
 
@@ -20,11 +20,11 @@ Since it's built with GTK3, you may normally experience errors like libcairo-2.d
 ## Linux
 
 If you get errors saying that some .so file isn't present, you didn't install GTK3. basically the same thing, but it takes one sudo command to have it installed.
-| Distro        | Command                       |
+| Distro | Command |
 | ------------- | ----------------------------- |
 | Ubuntu/Debian | `sudo apt install libgtk-3-0` |
-| Arch Linux    | `sudo pacman -S gtk3`         |
-| Fedora        | `sudo dnf install gtk3`       |
+| Arch Linux | `sudo pacman -S gtk3` |
+| Fedora | `sudo dnf install gtk3` |
 
 ## Building
 
@@ -35,10 +35,12 @@ If you get errors saying that some .so file isn't present, you didn't install GT
 3. Clone the git repository to `C:\msys64\home\{USERNAME}\` (or download source code)
 4. enter `pacman -S mingw-w64-x86_64-gtk3 mingw-w64-toolchain mingw-w64-gdk-pixbuf2 mingw-w64-go` and press enter again if asked
 5. export the following:
+
 ```bash
 export GOROOT=/mingw64/lib/go
 export GOPATH=/mingw64
 ```
+
 6. now type `go build -x`
 7. wait for a long time and hope errors won't jump on your face
 8. done!
