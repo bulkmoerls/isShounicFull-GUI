@@ -6,6 +6,7 @@ jobs:
     name: Build for ${{ matrix.os }} (${{ matrix.arch }})
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
@@ -25,16 +26,16 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.21' # Or your preferred version
+          go-version: '1.21'
 
-      # --- LINUX SPECIFIC SETUP ---
+      # --- LINUX DEPENDENCIES ---
       - name: Install Linux Dependencies
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libglib2.0-dev libc6-dev gettext
 
-      # --- WINDOWS SPECIFIC SETUP ---
+      # --- WINDOWS DEPENDENCIES ---
       - name: Install Windows Dependencies (MSYS2)
         if: matrix.os == 'windows-latest'
         uses: msys2/setup-msys2@v2
@@ -44,22 +45,24 @@ jobs:
             mingw-w64-${{ matrix.arch == 'amd64' && 'x86_64' || 'i686' }}-gtk3
             mingw-w64-${{ matrix.arch == 'amd64' && 'x86_64' || 'i686' }}-toolchain
 
-      - name: Build
+      # --- BUILD STEP ---
+      - name: Build Binary
         shell: bash
         run: |
-          # Create fake include for Linux just in case, though apt install usually fixes it
-          mkdir -p fake_include
-          touch fake_include/libintl.h
+          # 2. Configure Environment and Build
+          # We use -tags "gtk_3_18" to avoid the 'undefined: callback' error in gotk3 v0.6.4
+          export CGO_CFLAGS="-I$(pwd)/fake_include"
           
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            # Use the MSYS2 compiler for Windows
+            # Windows: Ensure MSYS2 tools are in path
             export PATH=$MSYS2_PATH_TYPE:$PATH
-            go build -v -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }}.exe .
+            go build -v -tags "gtk_3_18" -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }}.exe .
           else
-            # Standard Linux build
-            CGO_CFLAGS="-I$(pwd)/fake_include" go build -v -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }} .
+            # Linux: Standard build
+            go build -v -tags "gtk_3_18" -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }} .
           fi
 
+      # --- UPLOAD ---
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
