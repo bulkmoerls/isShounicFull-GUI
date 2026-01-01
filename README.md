@@ -41,7 +41,7 @@ export GOPATH=/mingw64
 7. wait for a long time and hope errors won't jump on your face
 8. done!
 
-# Linux
+## Linux
 
 _soon..._
 
