@@ -55,10 +55,15 @@ jobs:
           
 
           go mod tidy
-
+          
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            # Windows: Run build inside MSYS2 shell to avoid Strawberry Perl path issues
-            # 'msys2' is a special shell entry point provided by the setup-msys2 action
+            # 2. HARD FIX: Delete Strawberry Perl to stop pkg-config.bat conflict
+            # This is a known workaround for GitHub Actions Windows runners
+            rm -rf /c/Strawberry
+
+            # 3. Build using MSYS2 shell to ensure correct environment
+            # MSYSTEM variable ensures MINGW64 or MINGW32 paths are set correctly
+            MSYSTEM=${{ matrix.arch == 'amd64' && 'MINGW64' || 'MINGW32' }} \
             /usr/bin/bash -lc "go build -v -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }}.exe ."
           else
             # Linux: Standard native build
