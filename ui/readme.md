@@ -1,7 +1,7 @@
 # `ui/` directory
 
 > [!CAUTION]
-> Deleting the `.ui` file can render the program **unusable**.
+> Deleting the `.ui` file can render the program **unusable**. Turns out this also applies to Binary too.
 
 This contains the file responsible for building the UI.
 
