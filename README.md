@@ -56,4 +56,4 @@ Why is the full server ip exposed in the source code?
 
 go-a2s for making this project possible \
 gotk3 for the same thing, the ui and borrowing code from example repo. \
-@shounic for making the chaotic 100 player server (it was cinema) \
+@shounic for making the chaotic 100 player server (it was cinema)
