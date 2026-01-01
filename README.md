@@ -49,8 +49,10 @@ _soon..._
 
 ## faq
 
-Why is the full server ip exposed in the source code?
-: The Server IP is required to Query Info.
+<dl>
+<dt>Why is the full server ip exposed in the source code?</dt>
+<dd>The Server IP is required to Query Info.</dd>
+</dl>
 
 ## credits
 
