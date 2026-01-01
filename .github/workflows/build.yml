@@ -46,20 +46,26 @@ jobs:
             mingw-w64-${{ matrix.arch == 'amd64' && 'x86_64' || 'i686' }}-toolchain
 
       # --- BUILD STEP ---
+            # --- BUILD STEP ---
       - name: Build Binary
         shell: bash
         run: |
-          # 2. Configure Environment and Build
-          # We use -tags "gtk_3_18" to avoid the 'undefined: callback' error in gotk3 v0.6.4
-          export CGO_CFLAGS="-I$(pwd)/fake_include"
+          # Force update to fixed version of gotk3
+          go get github.com/gotk3/gotk3/gtk@master
           
+          go mod tidy
+
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            # Windows: Ensure MSYS2 tools are in path
+            # FIX: Remove Strawberry Perl from PATH to avoid pkg-config conflict
+            export PATH=$(echo $PATH | tr ':' '\n' | grep -v "Strawberry" | tr '\n' ':')
+            
+            # Ensure MSYS2 tools are prioritized
             export PATH=$MSYS2_PATH_TYPE:$PATH
-            go build -v -tags "gtk_3_18" -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }}.exe .
+            
+            go build -v -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }}.exe .
           else
-            # Linux: Standard build
-            go build -v -tags "gtk_3_18" -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }} .
+            # Linux: Native build
+            go build -v -o isShounicFull-${{ matrix.goos }}-${{ matrix.arch }} .
           fi
 
       # --- UPLOAD ---
