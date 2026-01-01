@@ -1,6 +1,6 @@
 # IsShounicFullGUI
 
-A GUI version of IsShounicFull that checks if Shounic Trenches (A TF2 Server) is full. \
+A GUI version of IsShounicFull that checks if [Shounic Trenches](https://www.battlemetrics.com/servers/tf2/23502552) is full. \
 \
 ![Built with Go](https://badges.penpow.dev/badges/built-with/go/cozy.svg)
 
