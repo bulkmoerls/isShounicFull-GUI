@@ -26,6 +26,23 @@ If you get errors saying that some .so file isn't present, you didn't install GT
 
 ## Building
 
+## Windows
+
+1. Install MSYS2.
+2. Open the MinGW64 MSYS2
+3. Clone the git repository to `C:\msys64\home\{USERNAME}\` (or download source code)
+4. enter `pacman -S mingw-w64-x86_64-gtk3 mingw-w64-toolchain mingw-w64-gdk-pixbuf2 mingw-w64-go` and press enter again if asked
+5. export the following:
+```bash
+export GOROOT=/mingw64/lib/go
+export GOPATH=/mingw64
+```
+6. now type `go build -x`
+7. wait for a long time and hope errors won't jump on your face
+8. done!
+
+# Linux
+
 _soon..._
 
 ## faq
