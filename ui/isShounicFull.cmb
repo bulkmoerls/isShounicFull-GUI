@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!DOCTYPE cambalache-project SYSTEM "cambalache-project.dtd">
+<!-- Created with Cambalache 0.96.3 -->
+<cambalache-project version="0.96.0" target_tk="gtk+-3.0">
+  <ui filename="isshounicfull.ui" sha256="d81f9cb47e80d8071d9497cf6099518234ff680c55e8c09741ef4be5edd8809b"/>
+</cambalache-project>

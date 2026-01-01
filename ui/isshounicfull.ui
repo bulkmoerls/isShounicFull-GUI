@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.96.3 -->
+<interface>
+  <!-- interface-name isshounicfull.ui -->
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="main_window">
+    <property name="default-height">300</property>
+    <property name="default-width">400</property>
+    <property name="title">IsShounicFull-gui</property>
+    <child>
+      <object class="GtkBox">
+        <property name="margin-bottom">8</property>
+        <property name="margin-end">8</property>
+        <property name="margin-start">8</property>
+        <property name="margin-top">8</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">8</property>
+        <child>
+          <object class="GtkLabel" id="status-label">
+            <property name="label">Checking...</property>
+            <property name="valign">start</property>
+            <property name="vexpand">True</property>
+            <property name="vexpand-set">True</property>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">8</property>
+            <property name="valign">center</property>
+            <property name="vexpand">True</property>
+            <property name="vexpand-set">True</property>
+            <child>
+              <object class="GtkLabel" id="players-label">
+                <property name="label">Players: null/100</property>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="map-label">
+                <property name="label">Map: pl_null</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="keyword-label">
+                <property name="justify">center</property>
+                <property name="label">Keywords: null</property>
+                <property name="margin-end">56</property>
+                <property name="margin-start">56</property>
+              </object>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="refresh-btn">
+            <property name="label">Refresh</property>
+            <property name="tooltip-text">Refreshes by Fetching Info.</property>
+            <property name="valign">end</property>
+            <property name="vexpand">True</property>
+            <property name="vexpand-set">True</property>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
