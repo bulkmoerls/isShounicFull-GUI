@@ -4,7 +4,7 @@ A GUI version of IsShounicFull that checks if [Shounic Trenches](https://www.bat
 \
 <img width="402" height="332" alt="Schreenshot2" src="https://github.com/user-attachments/assets/5bcf1660-f7b1-4854-9bd4-8c66937d2afe" />
 
-![Built with Go](https://badges.penpow.dev/badges/built-with/go/cozy.svg)
+[![Built with Go](https://badges.penpow.dev/badges/built-with/go/cozy.svg)](https://go.dev)
 
 ## "What is the meaning of this?"
 
